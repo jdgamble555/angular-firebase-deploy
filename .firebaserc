@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "test-projects-19046"
+  },
+  "targets": {
+    "test-projects-19046": {
+      "hosting": {
+        "angular-firebase-deploy": [
+          "test-projects-19046"
+        ]
+      }
+    }
+  }
+}
