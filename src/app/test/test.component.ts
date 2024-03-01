@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-test',
@@ -8,15 +9,22 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './test.component.html',
   styleUrl: './test.component.css'
 })
-export class TestComponent implements OnInit {
+export class TestComponent implements OnInit, OnDestroy {
+
   folderName: string | undefined;
+  paramsSubscription: Subscription | undefined;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.paramsSubscription = this.route.params.subscribe(params => {
       this.folderName = params['folderName'];
       // Now you can use this.folderName in your component
     });
   }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription?.unsubscribe();
+  }
+
 }
