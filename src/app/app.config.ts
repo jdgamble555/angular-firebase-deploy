@@ -23,9 +23,9 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
     importProvidersFrom(
-      //provideFirebaseApp(() => initializeApp()),
-      //provideAuth(() => getAuth()),
-      //provideFirestore(() => getFirestore())
+      provideFirebaseApp(() => initializeApp()),
+      provideAuth(() => getAuth()),
+      provideFirestore(() => getFirestore())
     )
   ]
 };
